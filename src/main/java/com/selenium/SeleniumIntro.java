@@ -2,6 +2,7 @@ package com.selenium;
 
 import java.time.Duration;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import org.openqa.selenium.By;
@@ -29,6 +30,7 @@ public class SeleniumIntro {
         hideShow();
         dropdDownExp();
         fourButtons();
+        webTableExample();
 
 
         // Tutup browser setelah selesai
@@ -49,7 +51,6 @@ public class SeleniumIntro {
       driver.findElement(By.id("confirmbtn")).click();
       System.out.println(driver.switchTo().alert().getText());
       driver.switchTo().alert().dismiss();
-      // driver.close();
     }
 
     public static void checkBox() {
@@ -117,6 +118,21 @@ public class SeleniumIntro {
    WebElement optioneThree = driver.findElement(By.id("dropdown-class-example")); 
    Select dropdown3 = new Select(optioneThree);
    dropdown3.selectByValue("option3");  
+}
+
+public static void webTableExample() {
+  WebElement webTable = driver.findElement(By.id("product"));
+		
+		List<WebElement> tableRows = webTable.findElements(By.tagName("tr"));
+		System.out.println(tableRows.size());
+		
+		List<WebElement> tableColumns = webTable.findElements(By.tagName("th"));
+		System.out.println(tableColumns.size());
+		
+		List<WebElement> secondRowDataList = tableRows.get(4).findElements(By.tagName("td"));
+		for(WebElement column : secondRowDataList) {
+			System.out.println(column.getText());
+    }
 }
 
 public static void fourButtons() {
