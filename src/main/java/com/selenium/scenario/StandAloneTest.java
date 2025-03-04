@@ -21,7 +21,6 @@ public class StandAloneTest {
         driver.findElement(By.id("login-button")).click();
 
         Thread.sleep(5000);
-
-;    }
+    }
 
 }
