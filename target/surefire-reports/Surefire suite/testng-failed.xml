@@ -5,6 +5,7 @@
     <classes>
       <class name="automation.TestNGTest">
         <methods>
+          <include name="tearDown"/>
           <include name="checkoutProduct"/>
           <include name="setUp"/>
         </methods>

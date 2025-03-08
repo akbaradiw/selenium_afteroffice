@@ -23,6 +23,9 @@ public class CheckoutPage {
     @FindBy(id = "postal-code")
     private WebElement postalCode;
 
+    @FindBy(className = "summary_info")
+    private WebElement summaryInfo;
+
     @FindBy(css = "input[value='CONTINUE']")
     private WebElement continueButton;
 
@@ -43,6 +46,10 @@ public class CheckoutPage {
 
     public void clickContinue() {
         continueButton.click();
+    }
+
+    public String getSummaryInfo() {
+        return summaryInfo.getText();
     }
 
     public void finishCheckout() {
