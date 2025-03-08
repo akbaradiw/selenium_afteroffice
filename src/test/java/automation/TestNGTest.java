@@ -5,6 +5,7 @@ import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
@@ -12,6 +13,7 @@ import com.selenium.pageobject.LoginPage;
 import com.selenium.pageobject.CartPage;
 import com.selenium.pageobject.ProductPage;
 import com.selenium.pageobject.CheckoutPage;
+import com.selenium.pageobject.ConfirmationPage;
 
 public class TestNGTest {
     public WebDriver driver;
@@ -53,13 +55,24 @@ public class TestNGTest {
         checkoutPage.inputPostalCode("666");
         checkoutPage.clickContinue();
         checkoutPage.finishCheckout();
+
+        // confirmation
+        ConfirmationPage confirmationPage = new ConfirmationPage(driver);
+        Assert.assertEquals(confirmationPage.getThanksMessage(), "THANK YOU FOR YOUR ORDER");
+        Assert.assertEquals(confirmationPage.getPonyExpress(), "Your order has been dispatched, and will arrive just as fast as the pony can get there!");
+
     }
+
+    @AfterMethod
+    public void tearDown(){
+        driver.quit();
+    }
+
 
 }
 
-// @AfterMethod
-// public void tearDown() {
-//     driver.quit();
-// }
+
+
+
 
 

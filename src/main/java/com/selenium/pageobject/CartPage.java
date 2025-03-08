@@ -4,13 +4,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class CartPage {
 
     WebDriver driver;
+    WebDriverWait wait;
 
     public CartPage(WebDriver driver) {
         this.driver = driver;
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Tunggu hingga 10 detik
         PageFactory.initElements(driver, this);
     }
 
@@ -24,14 +30,15 @@ public class CartPage {
     private WebElement removeButton;
 
     public void viewCart() {
-        cartButton.click();
+        wait.until(ExpectedConditions.visibilityOf(cartButton)).click();
     }
 
     public void proceedToCheckout() {
-        checkoutButton.click();
+        wait.until(ExpectedConditions.visibilityOf(checkoutButton)).click();
     }
 
     public void removeItemFromCart() {
-        removeButton.click();
+        wait.until(ExpectedConditions.visibilityOf(removeButton)).click();
     }
+
 }
