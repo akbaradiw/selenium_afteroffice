@@ -1,6 +1,7 @@
 D:\QA\selenium1\selenium\src\main\java\com\selenium\Main.java
 D:\QA\selenium1\selenium\src\main\java\com\selenium\pageobject\CartPage.java
 D:\QA\selenium1\selenium\src\main\java\com\selenium\pageobject\CheckoutPage.java
+D:\QA\selenium1\selenium\src\main\java\com\selenium\pageobject\ConfirmationPage.java
 D:\QA\selenium1\selenium\src\main\java\com\selenium\pageobject\LoginPage.java
 D:\QA\selenium1\selenium\src\main\java\com\selenium\pageobject\ProductPage.java
 D:\QA\selenium1\selenium\src\main\java\com\selenium\scenario\StandAloneTest.java
