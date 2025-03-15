@@ -11,7 +11,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 
 public class Hooks {
@@ -30,7 +29,7 @@ public class Hooks {
  
 
             System.setProperty("webdriver.chrome.driver", "D:\\kodingan sendiri\\chromedriver-win64\\chromedriver.exe");
-            WebDriverManager.chromedriver().setup();
+            // WebDriverManager.chromedriver().setup();
             driver =  new ChromeDriver();
         } else {
             // Driver firefox

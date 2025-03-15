@@ -1,9 +1,14 @@
 package com.selenium.pageobject;
 
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 public class ConfirmationPage {
     WebDriver driver;
@@ -19,12 +24,18 @@ public class ConfirmationPage {
     @FindBy (className="pony_express")
     private WebElement ponyExpress;
 
+
     public String getThanksMessage() {
-        return thanksMessage.getText();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOf(thanksMessage));
+        return thanksMessage.getText().trim();
     }
 
-    public String getPonyExpress() {
-        return ponyExpress.getText();
+public String getPonyExpress() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOf(ponyExpress));
+        return ponyExpress.getText().trim();
     }
+
 
 }

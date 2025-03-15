@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
+<testsuite name="Cucumber" time="7.749" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-03-15T16:30:50.061284700Z">
+<testcase classname="Purchase the order from ecommerce" name="Purchase Item Positive Case" time="4.4">
+=======
 <testsuite name="Cucumber" time="7.143" tests="1" skipped="0" failures="1" errors="0" timestamp="2025-03-15T14:16:45.535273800Z">
 <testcase classname="Purchase the order from ecommerce" name="Purchase Item Positive Case" time="6.907">
 <failure type="java.lang.NullPointerException" message="Cannot invoke &quot;org.openqa.selenium.SearchContext.findElement(org.openqa.selenium.By)&quot; because &quot;this.searchContext&quot; is null">
@@ -11,11 +15,18 @@
 	at ✽.User Logged to website(file:///D:/kodingan%20sendiri/web_auto/selenium_afteroffice/src/test/resources/features/PurchaseItem.feature:7)
 ]]>
 </failure>
+>>>>>>> master
 <system-out><![CDATA[
-Given User Logged to website................................................failed
-When User add item to Cart..................................................skipped
-And User checkout item......................................................skipped
-Then User will see message is displayed on confirmation page................skipped
+Given User Logged to website................................................passed
+When User add item to Cart..................................................passed
+And User checkout item......................................................passed
+Then User will see message is displayed on confirmation page................passed
+]]></system-out>
+</testcase>
+<testcase classname="Purchase the order from ecommerce" name="User Logout from saucedemo" time="3.041">
+<system-out><![CDATA[
+Given User Logged to website................................................passed
+Then User Logout from website...............................................passed
 ]]></system-out>
 </testcase>
 </testsuite>
