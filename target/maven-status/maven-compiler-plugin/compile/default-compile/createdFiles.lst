@@ -1,4 +1,5 @@
 com\selenium\pageobject\ProductPage.class
+com\selenium\pageobject\SignOut.class
 com\selenium\pageobject\ConfirmationPage.class
 com\selenium\pageobject\LoginPage.class
 com\selenium\pageobject\CheckoutPage.class

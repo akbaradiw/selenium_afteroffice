@@ -28,4 +28,9 @@ public class LoginPage {
      userPassword.sendKeys(password);
      loginButton.click();
  }
+
+ public void clickLoginButton() {
+     loginButton.click();
+ }
+
 }
