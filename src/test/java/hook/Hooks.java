@@ -21,7 +21,7 @@ public class Hooks {
     @Before
     public void setupAutomation() throws IOException{
         Properties properties = new Properties();
-        FileInputStream fileInputStream = new FileInputStream("D:\\QA\\selenium1\\selenium\\src\\main\\resources\\GlobalData.properties");
+        FileInputStream fileInputStream = new FileInputStream("D:\\kodingan sendiri\\web_auto\\selenium_afteroffice\\src\\main\\resources\\GlobalData.properties");
 
         properties.load(fileInputStream);
         String browserName = properties.getProperty("browser");
@@ -29,7 +29,7 @@ public class Hooks {
         if (browserName.equals("chrome")){
  
 
-            System.setProperty("webdriver.chrome.driver", "D:\\QA\\chromedriver-win64\\chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", "D:\\kodingan sendiri\\chromedriver-win64\\chromedriver.exe");
             WebDriverManager.chromedriver().setup();
             driver =  new ChromeDriver();
         } else {

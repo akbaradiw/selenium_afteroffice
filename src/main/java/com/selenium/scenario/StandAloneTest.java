@@ -14,7 +14,7 @@ public class StandAloneTest {
     static WebDriver driver;
 
     public static void main(String[] args) throws InterruptedException {
-        System.setProperty("webdriver.chrome.driver", "D:\\QA\\chromedriver-win64\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "D:\\kodingan sendiri\\chromedriver-win64\\chromedriver.exe");
         driver = new ChromeDriver();
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
