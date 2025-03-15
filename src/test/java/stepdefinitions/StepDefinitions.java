@@ -42,8 +42,6 @@ public class StepDefinitions {
     public void userLogin() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.loginApplication("standard_user", "secret_sauce");
-        loginPage.clickLoginButton();
-
     }
 
   
