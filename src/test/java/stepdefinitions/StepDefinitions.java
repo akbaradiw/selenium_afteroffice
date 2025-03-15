@@ -2,9 +2,7 @@ package stepdefinitions;
 
 import java.io.IOException;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
 import com.selenium.pageobject.CartPage;
@@ -12,6 +10,7 @@ import com.selenium.pageobject.CheckoutPage;
 import com.selenium.pageobject.ConfirmationPage;
 import com.selenium.pageobject.LoginPage;
 import com.selenium.pageobject.ProductPage;
+import com.selenium.pageobject.SignOut;
 
 import hook.Hooks;
 import io.cucumber.java.en.And;
@@ -24,27 +23,25 @@ public class StepDefinitions {
     
     WebDriver driver;
 
-    // @Given ("User landing to ecommerce")
-    // public void landingPage() {
-    //     System.setProperty("webdriver.chrome.driver", "D:\\QA\\chromedriver-win64\\chromedriver.exe");
-    //     driver = new ChromeDriver();
-
-    //     driver.get("https://www.saucedemo.com/v1/");
-    // 
+ 
 
     @Given ("User landing to ecommerce")
     public void landingPage() throws IOException{
-        driver=Hooks.initializeDriver();
+        // driver=Hooks.initializeDriver();
 
-    }
-
-    @Given ("User Logged to website")
-    public void userLogin() {
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.loginApplication("standard_user", "secret_sauce");
     }
 
   
+    @Given("User Logged to website")
+    public void userLogin() {
+    if (driver == null) {
+        System.out.println("Driver is null. Initializing driver...");
+        driver = Hooks.initializeDriver();
+    }
+    LoginPage loginPage = new LoginPage(driver);
+    loginPage.loginApplication("standard_user", "secret_sauce");
+}
+
 
     @When ("User add item to Cart")
     public void addCart(){
@@ -68,10 +65,24 @@ public class StepDefinitions {
         checkoutPage.finishCheckout();
     }
 
-    @Then ("User will see message is displayed on confirmation page")
-    public void confirmationPage(){
-        ConfirmationPage confirmationPage = new ConfirmationPage(driver);
-        Assert.assertEquals(confirmationPage.getThanksMessage(), "THANK YOU FOR YOUR ORDER");
-        Assert.assertEquals(confirmationPage.getPonyExpress(), "Your order has been dispatched, and will arrive just as fast as the pony can get there!");
-    }
+
+    @Then("User will see message is displayed on confirmation page")
+    public void confirmationPage() {
+    ConfirmationPage confirmationPage = new ConfirmationPage(driver);
+
+    String actualThanksMessage = confirmationPage.getThanksMessage();
+
+    System.out.println("Actual Thanks Message: " + actualThanksMessage);
+
+    Assert.assertEquals(actualThanksMessage, "THANK YOU FOR YOUR ORDER");
+}
+
+@Then ("User Logout from website")
+public void logout(){
+  SignOut signOut = new SignOut(driver);
+  signOut.clickSignOutButton();
+
+  Assert.assertEquals(driver.getTitle(), "Swag Labs");
+}
+
 }

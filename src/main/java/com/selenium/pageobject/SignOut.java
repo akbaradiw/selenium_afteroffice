@@ -15,10 +15,14 @@ public class SignOut {
         PageFactory.initElements(driver, this);
     }
 
+    @FindBy(className="bm-burger-button")
+    private WebElement menuButton;
+
     @FindBy(id="logout_sidebar_link")
     private WebElement signOutButton;
 
     public void clickSignOutButton() {
+        menuButton.click();
         signOutButton.click();
     }
 
