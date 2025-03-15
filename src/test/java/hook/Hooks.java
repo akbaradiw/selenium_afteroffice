@@ -29,7 +29,11 @@ public class Hooks {
  
 
             System.setProperty("webdriver.chrome.driver", "D:\\kodingan sendiri\\chromedriver-win64\\chromedriver.exe");
+<<<<<<< HEAD
             // WebDriverManager.chromedriver().setup();
+=======
+            WebDriverManager.chromedriver().setup();
+>>>>>>> master
             driver =  new ChromeDriver();
         } else {
             // Driver firefox
