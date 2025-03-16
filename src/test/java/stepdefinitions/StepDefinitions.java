@@ -23,27 +23,24 @@ public class StepDefinitions {
     
     WebDriver driver;
 
- 
-
     @Given ("User landing to ecommerce")
     public void landingPage() throws IOException{
-        // driver=Hooks.initializeDriver();
-
+        driver=Hooks.initializeDriver();
     }
 
   
-    @Given("User Logged to website")
-    public void userLogin() {
+    @Given("^User Logged to website with username (.+) and password (.+)$")
+    public void userLogin( String username, String password) {
     if (driver == null) {
         System.out.println("Driver is null. Initializing driver...");
         driver = Hooks.initializeDriver();
     }
     LoginPage loginPage = new LoginPage(driver);
-    loginPage.loginApplication("standard_user", "secret_sauce");
+    loginPage.loginApplication( username, password);
 }
 
 
-    @When ("User add item to Cart")
+ @When ("User add item to Cart")
     public void addCart(){
          String productName = "Test.allTheThings() T-Shirt (Red)";
         ProductPage productPage = new ProductPage(driver);
@@ -55,18 +52,24 @@ public class StepDefinitions {
         cartPage.proceedToCheckout();
     }
 
-    @And ("User checkout item")
-    public void checkoutItem(){
+@And ("User checkout item and input first name {string} last name {string} and postal code {string}")
+    public void checkoutItem( String first_name, String last_name, String postal_code) {
         CheckoutPage checkoutPage = new CheckoutPage(driver);
-        checkoutPage.inputFirstName("Tan");
-        checkoutPage.inputLastName("Malaka");
-        checkoutPage.inputPostalCode("666");
+        checkoutPage.inputFirstName(first_name);
+        checkoutPage.inputLastName(last_name);
+        checkoutPage.inputPostalCode(postal_code);
         checkoutPage.clickContinue();
         checkoutPage.finishCheckout();
     }
 
+@And ("User Click Continue Button")
+    public void clickContinue(){
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
+        checkoutPage.clickContinue();
+    }
 
-    @Then("User will see message is displayed on confirmation page")
+
+@Then("User will see message is displayed on confirmation page")
     public void confirmationPage() {
     ConfirmationPage confirmationPage = new ConfirmationPage(driver);
 
@@ -83,6 +86,13 @@ public void logout(){
   signOut.clickSignOutButton();
 
   Assert.assertEquals(driver.getTitle(), "Swag Labs");
+}
+
+@Then("User Then User will see error message")
+public void errorMessage() {
+    ConfirmationPage confirmationPage = new ConfirmationPage(driver);
+    String actualErrorMessage = confirmationPage.getErrorAlert();
+    Assert.assertEquals(actualErrorMessage, "Error: Postal Code required");
 }
 
 }

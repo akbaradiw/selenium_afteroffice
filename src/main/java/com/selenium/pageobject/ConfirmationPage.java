@@ -24,6 +24,9 @@ public class ConfirmationPage {
     @FindBy (className="pony_express")
     private WebElement ponyExpress;
 
+    @FindBy (className="error-button")
+    private WebElement errorAlert;
+
 
     public String getThanksMessage() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -35,6 +38,12 @@ public String getPonyExpress() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOf(ponyExpress));
         return ponyExpress.getText().trim();
+    }
+
+public String getErrorAlert() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOf(errorAlert));
+        return errorAlert.getText().trim();
     }
 
 

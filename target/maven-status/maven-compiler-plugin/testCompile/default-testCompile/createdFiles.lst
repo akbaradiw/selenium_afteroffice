@@ -1,4 +1,5 @@
 stepdefinitions\StepDefinitions.class
 hook\Hooks.class
 runners\TestRunner.class
+runners\TestRunnerTestNG.class
 automation\TestNGTest.class
